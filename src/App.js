@@ -5,32 +5,33 @@ import { getPeople } from './queries';
 class App extends Component {
   render() {
     const { data: { loading, people } } = this.props;
+    console.log("loading:", loading, "people:", people);
     return (
       <main>
         <header>
-          <h1>Apollo Client Error Template</h1>
+          <h1>Apollo Client Error Reproduction</h1>
           <p>
-            This is a template that you can use to demonstrate an error in Apollo Client.
-            Edit the source code and watch your browser window reload with the changes.
+            This is a template to demonstrate the error(s) I find in Apollo Client.
           </p>
           <p>
-            The code which renders this component lives in <code>./src/App.js</code>.
-          </p>
-          <p>
-            The GraphQL schema is in <code>./src/graphql/schema</code>.
-            Currently the schema just serves a list of people with names and ids.
+            The GraphQL schema is in <code>./src/graphql/schema.graphql</code>.
+            The GraphQL query is in <code>./src/getPeople.graphql</code>.
           </p>
         </header>
         {loading ? (
           <p>Loading…</p>
         ) : (
+            people ? (
           <ul>
             {people.map(person => (
               <li key={person.id}>
-                {person.name}
+                  { JSON.stringify(person) }
               </li>
             ))}
           </ul>
+            ) : (
+                <p>No data</p>
+            )
         )}
       </main>
     );

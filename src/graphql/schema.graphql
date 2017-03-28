@@ -1,12 +1,27 @@
-type Person {
+interface Person {
     id: ID!
     name: String!
+    sex: String!
+}
+
+type Man implements Person {
+    id: ID!
+    name: String!
+    sex: String!
+    trouserSize: Int!
+}
+
+type Woman implements Person {
+    id: ID!
+    name: String!
+    sex: String!
+    skirtSize: Int!
 }
 
 type Query {
-    people: [Person!]
+    people: [Person!]!
 }
 
 schema {
-    query: Query,
+    query: Query
 }

@@ -1,6 +1,25 @@
+fragment MaleInfo on Man {
+  trouserSize
+}
+
+fragment FemaleInfo on Woman {
+  skirtSize
+}
+
+fragment PersonInfo on Person {
+  id
+  name
+  sex
+  ... on Man {
+      ...MaleInfo
+  }
+  ... on Woman {
+      ...FemaleInfo
+  }
+}
+
 {
   people {
-    id
-    name
+      ...PersonInfo
   }
 }

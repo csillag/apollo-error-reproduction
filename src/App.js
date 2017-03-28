@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { gql, graphql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+import { getPeople } from './queries';
 
 class App extends Component {
   render() {
@@ -37,10 +38,5 @@ class App extends Component {
 }
 
 export default graphql(
-  gql`{
-    people {
-      id
-      name
-    }
-  }`,
+    getPeople
 )(App)
